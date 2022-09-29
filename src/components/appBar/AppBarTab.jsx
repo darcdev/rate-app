@@ -1,5 +1,5 @@
 import { Alert, Pressable, StyleSheet, Text } from "react-native";
-import theme from "../theme";
+import theme from "../../theme";
 
 const AppBarTab = ({ menuItem }) => {
   return (
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     paddingRight: 35,
   },
   menuItemText: {
-    color: theme.appBar.color,
+    color: theme.colors.textWhite,
   },
 });
 export default AppBarTab;

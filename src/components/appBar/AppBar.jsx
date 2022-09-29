@@ -1,6 +1,6 @@
 import { View, StyleSheet } from "react-native";
 import Constants from "expo-constants";
-import theme from "../theme";
+import theme from "../../theme";
 import AppBarTab from "./AppBarTab";
 
 const navMenu = [
@@ -24,7 +24,7 @@ const AppBar = () => {
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.appBar.bg,
+    backgroundColor: theme.bg.nav,
     height: 80,
     paddingHorizontal: 10,
     flexDirection: "row",
