@@ -1,4 +1,5 @@
 import { Alert, Pressable, StyleSheet, Text } from "react-native";
+import { Link } from "react-router-native";
 import theme from "../../theme";
 
 const AppBarTab = ({ menuItem }) => {
@@ -8,14 +9,21 @@ const AppBarTab = ({ menuItem }) => {
       style={styles.menuItem}
       key={menuItem.name}
     >
-      <Text style={styles.menuItemText}>{menuItem.name}</Text>
+      <Link to={menuItem.path} style={styles.link}>
+        <Text style={styles.menuItemText}>{menuItem.name}</Text>
+      </Link>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   menuItem: {
-    paddingRight: 35,
+    paddingRight: 20,
+  },
+  link: {
+    height: "100%",
+    flexDirection: "row",
+    alignItems: "center",
   },
   menuItemText: {
     color: theme.colors.textWhite,

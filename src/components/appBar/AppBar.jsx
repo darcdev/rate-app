@@ -1,22 +1,22 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import Constants from "expo-constants";
 import theme from "../../theme";
 import AppBarTab from "./AppBarTab";
 
 const navMenu = [
-  { name: "Repositories" },
-  { name: "SignIn" },
-  { name: "Reviews" },
+  { name: "Repositories", path: "/" },
+  { name: "SignIn", path: "/signin" },
+  { name: "Reviews", path: "/reviews" },
 ];
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.menu}>
+      <ScrollView style={styles.menu} horizontal>
         {navMenu.map((menuItem) => (
           <AppBarTab menuItem={menuItem} key={menuItem.name} />
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     height: 80,
     paddingHorizontal: 10,
     flexDirection: "row",
-    alignItems: "center",
   },
   menu: {
     flexDirection: "row",
