@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import SignIndexForm from "../components/signIn/SignIndexForm";
 
 const SignIn = () => {
   return (
     <View>
-      <Text>SignIn</Text>
+      <SignIndexForm />
     </View>
   );
 };
