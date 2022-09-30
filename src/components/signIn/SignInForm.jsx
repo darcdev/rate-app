@@ -3,12 +3,16 @@ import React from "react";
 import FormikTextInput from "../customComponents/FormikTextInput";
 import theme from "../../theme";
 
-const SignInForm = ({ onSubmit }) => {
+const SignInForm = ({ onSubmit, isValid }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" secureTextEntry />
-      <Pressable style={styles.submitButton} onPress={onSubmit}>
+      <Pressable
+        style={styles.submitButton}
+        onPress={onSubmit}
+        disabled={isValid}
+      >
         <Text style={styles.labelSubmit}>Sign in</Text>
       </Pressable>
     </View>

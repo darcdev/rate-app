@@ -19,7 +19,8 @@
     "prettier": "^2.7.1",
     "react": "18.0.0",
     "react-native": "0.69.5",
-    "react-router-native": "^6.4.1"
+    "react-router-native": "^6.4.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

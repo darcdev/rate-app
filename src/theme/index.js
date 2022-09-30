@@ -8,6 +8,7 @@ const theme = {
     textPrimary: "#24292e",
     textSecondary: "#586069",
     textWhite: "#fff",
+    error: "#d73a4a",
   },
   fontSizes: {
     body: 14,

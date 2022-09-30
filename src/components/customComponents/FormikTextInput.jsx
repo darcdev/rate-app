@@ -3,12 +3,7 @@ import { useField } from "formik";
 
 import TextInput from "./TextInput";
 import Text from "./Text";
-
-const styles = StyleSheet.create({
-  errorText: {
-    marginTop: 5,
-  },
-});
+import theme from "../../theme";
 
 const FormikTextInput = ({ name, ...props }) => {
   const [field, meta, helpers] = useField(name);
@@ -27,5 +22,12 @@ const FormikTextInput = ({ name, ...props }) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  errorText: {
+    marginBottom: 10,
+    color: theme.colors.error,
+  },
+});
 
 export default FormikTextInput;
