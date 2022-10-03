@@ -3,10 +3,11 @@ import CardHeader from "../cardRepository/CardHeader";
 import CardStatistics from "../cardRepository/CardStatistics";
 
 const RepositoryItem = ({ item }) => {
+  const { node: repository } = item;
   return (
     <View style={styles.cardContainer}>
-      <CardHeader item={item} />
-      <CardStatistics item={item} />
+      <CardHeader item={repository} />
+      <CardStatistics item={repository} />
     </View>
   );
 };
