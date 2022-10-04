@@ -1,5 +1,4 @@
 import "dotenv/config";
-console.log("sss", process.env.APOLLO_URI);
 
 export default {
   expo: {
