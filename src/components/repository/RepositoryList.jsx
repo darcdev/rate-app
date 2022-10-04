@@ -10,7 +10,6 @@ const RepositoryList = () => {
   });
 
   if (loading) return <Text>Loading...</Text>;
-  console.log(data);
   return (
     <FlatList
       data={data.repositories.edges}

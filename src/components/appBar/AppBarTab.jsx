@@ -1,17 +1,21 @@
-import { Alert, Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { Link } from "react-router-native";
 import theme from "../../theme";
 
 const AppBarTab = ({ menuItem }) => {
   return (
     <Pressable
-      onPress={() => Alert.alert("prueba menu")}
+      onPress={menuItem.fn}
       style={styles.menuItem}
       key={menuItem.name}
     >
-      <Link to={menuItem.path} style={styles.link}>
+      {menuItem.path ? (
+        <Link to={menuItem.path} style={styles.link}>
+          <Text style={styles.menuItemText}>{menuItem.name}</Text>
+        </Link>
+      ) : (
         <Text style={styles.menuItemText}>{menuItem.name}</Text>
-      </Link>
+      )}
     </Pressable>
   );
 };
@@ -19,11 +23,9 @@ const AppBarTab = ({ menuItem }) => {
 const styles = StyleSheet.create({
   menuItem: {
     paddingRight: 20,
-  },
-  link: {
-    height: "100%",
     flexDirection: "row",
     alignItems: "center",
+    height: "100%",
   },
   menuItemText: {
     color: theme.colors.textWhite,
