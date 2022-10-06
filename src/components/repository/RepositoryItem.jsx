@@ -5,7 +5,7 @@ import CardStatistics from "../cardRepository/CardStatistics";
 const RepositoryItem = ({ item }) => {
   const { node: repository } = item;
   return (
-    <View style={styles.cardContainer}>
+    <View testID="repositoryItem" style={styles.cardContainer}>
       <CardHeader item={repository} />
       <CardStatistics item={repository} />
     </View>
