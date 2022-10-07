@@ -1,13 +1,24 @@
 import { View, StyleSheet, FlatList } from "react-native";
-import RepositoryItem from "./RepositoryItem";
+import { useNavigate } from "react-router-native";
+import PressableRepositoryItem from "./PressableRepositoryItem";
 
 const RepositoryListContainer = ({ data }) => {
+  const navigate = useNavigate();
+  const onPressRepository = (id) => {
+    navigate(`/repository/${id}`);
+  };
+  const repositoryNodes = data ? data.edges.map((edge) => edge.node) : [];
   return (
     <FlatList
-      data={data?.edges}
+      data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={RepositoryItem}
-      keyExtractor={(item) => item.node.id}
+      renderItem={({ item }) => (
+        <PressableRepositoryItem
+          item={item}
+          onPressRepository={onPressRepository}
+        />
+      )}
+      keyExtractor={(item) => item.id}
     />
   );
 };
