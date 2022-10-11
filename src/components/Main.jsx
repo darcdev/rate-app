@@ -7,6 +7,7 @@ import SingleRepository from "../screens/SingleRepository";
 import theme from "../theme";
 import AppBar from "./appBar/AppBar";
 import RepositoryList from "./repository/RepositoryList";
+import CreateReview from "../screens/CreateReview";
 
 const Main = () => {
   return (
@@ -15,6 +16,7 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
         <Route path="/reviews" element={<SignIn />} exact />
+        <Route path="/create-review" element={<CreateReview />} exact />
         <Route path="/repository/:id" element={<SingleRepository />} exact />
         <Route path="/signin" element={<SignIn />} exact />
         <Route path="*" element={<Navigate to="/" replace />} exact />

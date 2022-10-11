@@ -7,10 +7,7 @@ import { GET_USER } from "../../graphql/queries";
 import useAuthStorage from "../../hooks/useAuthStorageContext";
 import { useNavigate } from "react-router-native";
 
-const navMenu = [
-  { name: "Repositories", path: "/" },
-  { name: "Reviews", path: "/reviews" },
-];
+const navMenu = [{ name: "Repositories", path: "/" }];
 
 const AppBar = () => {
   const authStorage = useAuthStorage();
@@ -34,9 +31,16 @@ const AppBar = () => {
           <AppBarTab menuItem={menuItem} key={menuItem.name} />
         ))}
         {!authorizedUser ? (
-          <AppBarTab menuItem={{ name: "SignIn", path: "/signin" }} />
+          <>
+            <AppBarTab menuItem={{ name: "SignIn", path: "/signin" }} />
+          </>
         ) : (
-          <AppBarTab menuItem={{ name: "SignOut", fn: signOut }} />
+          <>
+            <AppBarTab
+              menuItem={{ name: "Create Review", path: "/create-review" }}
+            />
+            <AppBarTab menuItem={{ name: "SignOut", fn: signOut }} />
+          </>
         )}
       </ScrollView>
     </View>
