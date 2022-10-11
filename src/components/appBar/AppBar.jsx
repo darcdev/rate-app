@@ -33,6 +33,7 @@ const AppBar = () => {
         {!authorizedUser ? (
           <>
             <AppBarTab menuItem={{ name: "SignIn", path: "/signin" }} />
+            <AppBarTab menuItem={{ name: "SignUp", path: "/signup" }} />
           </>
         ) : (
           <>

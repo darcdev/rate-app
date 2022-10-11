@@ -8,6 +8,7 @@ import theme from "../theme";
 import AppBar from "./appBar/AppBar";
 import RepositoryList from "./repository/RepositoryList";
 import CreateReview from "../screens/CreateReview";
+import SignUp from "../screens/SignUp";
 
 const Main = () => {
   return (
@@ -19,6 +20,7 @@ const Main = () => {
         <Route path="/create-review" element={<CreateReview />} exact />
         <Route path="/repository/:id" element={<SingleRepository />} exact />
         <Route path="/signin" element={<SignIn />} exact />
+        <Route path="/signup" element={<SignUp />} exact />
         <Route path="*" element={<Navigate to="/" replace />} exact />
       </Routes>
       <StatusBar style="inverted" />
