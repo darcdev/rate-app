@@ -1,8 +1,9 @@
 import { View, StyleSheet, FlatList } from "react-native";
 import { useNavigate } from "react-router-native";
+import OrderRepositoryPicker from "./OrderRepositoryPicker";
 import PressableRepositoryItem from "./PressableRepositoryItem";
 
-const RepositoryListContainer = ({ data }) => {
+const RepositoryListContainer = ({ data, selectedOrder, setSelectedOrder }) => {
   const navigate = useNavigate();
   const onPressRepository = (id) => {
     navigate(`/repository/${id}`);
@@ -12,6 +13,12 @@ const RepositoryListContainer = ({ data }) => {
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
+      ListHeaderComponent={
+        <OrderRepositoryPicker
+          selectedOrder={selectedOrder}
+          setSelectedOrder={setSelectedOrder}
+        />
+      }
       renderItem={({ item }) => (
         <PressableRepositoryItem
           item={item}

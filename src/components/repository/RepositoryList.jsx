@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import useRepositories from "../../hooks/useRepositories";
 import RepositoryListContainer from "./RepositoryListContainer";
 const RepositoryList = () => {
-  const { data } = useRepositories();
-  return <RepositoryListContainer data={data?.repositories} />;
+  const [selectedOrder, setSelectedOrder] = useState("");
+  const { data } = useRepositories(selectedOrder);
+  return (
+    <RepositoryListContainer
+      selectedOrder={selectedOrder}
+      setSelectedOrder={setSelectedOrder}
+      data={data?.repositories}
+    />
+  );
 };
 
 export default RepositoryList;
