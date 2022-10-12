@@ -5,9 +5,14 @@ const OrderRepositoryPicker = ({ selectedOrder, setSelectedOrder }) => {
     <Picker
       selectedValue={selectedOrder}
       onValueChange={(itemValue) => setSelectedOrder(itemValue)}
-      prompt={"Select an item..."}
     >
-      <Picker.Item label="Latest Repositories" value="latest" selectedValue />
+      <Picker.Item
+        label="Select an item..."
+        value=""
+        enabled={false}
+        style={{ color: "gray" }}
+      />
+      <Picker.Item label="Latest Repositories" value="latest" />
       <Picker.Item label="Highest rated Repositories" value="highest" />
       <Picker.Item label="Lowest rated Repositories" value="lowest" />
     </Picker>

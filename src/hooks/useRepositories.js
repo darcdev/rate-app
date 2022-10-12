@@ -15,10 +15,10 @@ const order = {
   },
 };
 
-const useRepositories = (selectedOrder) => {
+const useRepositories = (selectedOrder, searchKeyword) => {
   const { data } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-network",
-    variables: order[selectedOrder],
+    variables: { ...order[selectedOrder], searchKeyword },
   });
   return { data };
 };

@@ -2,8 +2,15 @@ import { View, StyleSheet, FlatList } from "react-native";
 import { useNavigate } from "react-router-native";
 import OrderRepositoryPicker from "./OrderRepositoryPicker";
 import PressableRepositoryItem from "./PressableRepositoryItem";
+import { Searchbar } from "react-native-paper";
 
-const RepositoryListContainer = ({ data, selectedOrder, setSelectedOrder }) => {
+const RepositoryListContainer = ({
+  data,
+  selectedOrder,
+  setSelectedOrder,
+  searchKeyword,
+  setSearchKeyword,
+}) => {
   const navigate = useNavigate();
   const onPressRepository = (id) => {
     navigate(`/repository/${id}`);
@@ -14,10 +21,17 @@ const RepositoryListContainer = ({ data, selectedOrder, setSelectedOrder }) => {
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       ListHeaderComponent={
-        <OrderRepositoryPicker
-          selectedOrder={selectedOrder}
-          setSelectedOrder={setSelectedOrder}
-        />
+        <View style={styles.headerList}>
+          <Searchbar
+            placeholder="Search"
+            onChangeText={(query) => setSearchKeyword(query)}
+            value={searchKeyword}
+          />
+          <OrderRepositoryPicker
+            selectedOrder={selectedOrder}
+            setSelectedOrder={setSelectedOrder}
+          />
+        </View>
       }
       renderItem={({ item }) => (
         <PressableRepositoryItem
@@ -35,6 +49,9 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const styles = StyleSheet.create({
   separator: {
     height: 10,
+  },
+  headerList: {
+    padding: 20,
   },
 });
 
