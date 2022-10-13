@@ -10,12 +10,14 @@ const RepositoryListContainer = ({
   setSelectedOrder,
   searchKeyword,
   setSearchKeyword,
+  onEndReach,
 }) => {
   const navigate = useNavigate();
   const onPressRepository = (id) => {
     navigate(`/repository/${id}`);
   };
   const repositoryNodes = data ? data.edges.map((edge) => edge.node) : [];
+  console.log("repositories", repositoryNodes);
   return (
     <FlatList
       data={repositoryNodes}
@@ -40,6 +42,8 @@ const RepositoryListContainer = ({
         />
       )}
       keyExtractor={(item) => item.id}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };

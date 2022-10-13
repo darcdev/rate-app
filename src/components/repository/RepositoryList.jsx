@@ -5,8 +5,15 @@ const RepositoryList = () => {
   const [selectedOrder, setSelectedOrder] = useState("latest");
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  const { data } = useRepositories(selectedOrder, searchKeyword);
+  const { data, fetchMore } = useRepositories({
+    selectedOrder,
+    searchKeyword,
+    first: 4,
+  });
 
+  const onEndReach = () => {
+    fetchMore();
+  };
   return (
     <RepositoryListContainer
       selectedOrder={selectedOrder}
@@ -14,6 +21,7 @@ const RepositoryList = () => {
       searchKeyword={searchKeyword}
       setSearchKeyword={setSearchKeyword}
       data={data?.repositories}
+      onEndReach={onEndReach}
     />
   );
 };

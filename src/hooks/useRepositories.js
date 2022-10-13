@@ -15,12 +15,25 @@ const order = {
   },
 };
 
-const useRepositories = (selectedOrder, searchKeyword) => {
-  const { data } = useQuery(GET_REPOSITORIES, {
+const useRepositories = ({ selectedOrder, ...variables }) => {
+  const variablesModified = { ...order[selectedOrder], ...variables };
+  const { data, fetchMore, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-network",
-    variables: { ...order[selectedOrder], searchKeyword },
+    variables: variablesModified,
   });
-  return { data };
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+    if (!canFetchMore) {
+      return;
+    }
+    fetchMore({
+      variables: {
+        after: data.repositories.pageInfo.endCursor,
+        ...variablesModified,
+      },
+    });
+  };
+  return { data, fetchMore: handleFetchMore };
 };
 
 export default useRepositories;
