@@ -68,3 +68,9 @@ Rate App is a mobile application for rate and review github repositories, as wel
 - Apollo Client
 - AsyncStorage
 - Testing Library React Native
+
+> **_NOTE:_** This project is a compilation of solution to the exercises in [part 10: React Native](https://fullstackopen.com/en/#course-contents) of the 2022 edition of the [Full Stack Open Course](https://fullstackopen.com/en/#course-contents) from the University of Helsinki.
+
+[View Certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fs-react-native-2020/en/3101a9b4d96cc22dd70c19c1e00afe90)
+
+Give the repo a star ⭐ ⬆️.
