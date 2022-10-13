@@ -18,7 +18,7 @@ const order = {
 const useRepositories = ({ selectedOrder, ...variables }) => {
   const variablesModified = { ...order[selectedOrder], ...variables };
   const { data, fetchMore, loading } = useQuery(GET_REPOSITORIES, {
-    fetchPolicy: "cache-network",
+    fetchPolicy: "cache-and-network",
     variables: variablesModified,
   });
   const handleFetchMore = () => {
