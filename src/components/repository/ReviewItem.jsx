@@ -4,7 +4,7 @@ import theme from "../../theme";
 import Text from "../customComponents/Text";
 import { format } from "date-fns";
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, myReview }) => {
   return (
     <View style={styles.cardContainer}>
       <View>
@@ -24,7 +24,7 @@ const ReviewItem = ({ review }) => {
           fontWeight="bold"
           fontSize="subheading"
         >
-          {review.user.username}
+          {myReview ? review.repository.fullName : review.user.username}
         </Text>
         <Text style={styles.reviewDate} color="textSecondary">
           {format(new Date(review.createdAt), "dd.MM.yyyy")}

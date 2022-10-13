@@ -13,7 +13,6 @@ const SingleRepository = () => {
 
   if (!data) return null;
   const reviews = data.repository.reviews?.edges.map((edge) => edge.node);
-  console.log("reviews", reviews);
   return (
     <FlatList
       ListHeaderComponent={
