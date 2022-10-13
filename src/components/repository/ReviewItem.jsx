@@ -1,11 +1,33 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable, Alert } from "react-native";
 import * as Linking from "expo-linking";
 import React from "react";
 import theme from "../../theme";
 import Text from "../customComponents/Text";
 import { format } from "date-fns";
+import useDeleteReview from "../../hooks/useDeleteReview";
 
-const ReviewItem = ({ review, myReview }) => {
+const ReviewItem = ({ review, myReview, refetchReviews }) => {
+  const [deleteReview] = useDeleteReview();
+
+  const handleDelete = async () => {
+    await deleteReview(review.id);
+    refetchReviews();
+  };
+
+  const handleAlertDelete = () => {
+    Alert.alert(
+      "Delete Review",
+      "Are you sure you want to delete this review?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        { text: "Delete", onPress: async () => await handleDelete() },
+      ]
+    );
+  };
+
   return (
     <View style={styles.cardContainer}>
       <View style={styles.informationContainer}>
@@ -44,7 +66,10 @@ const ReviewItem = ({ review, myReview }) => {
               View Repository
             </Text>
           </Pressable>
-          <Pressable style={[styles.buttonAction, styles.deleteReview]}>
+          <Pressable
+            onPress={handleAlertDelete}
+            style={[styles.buttonAction, styles.deleteReview]}
+          >
             <Text fontWeight="bold" style={styles.labelSubmit}>
               Delete Review
             </Text>
