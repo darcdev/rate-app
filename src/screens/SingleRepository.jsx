@@ -1,22 +1,15 @@
-import { useLazyQuery } from "@apollo/client";
-import { useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useParams } from "react-router-native";
 import RepositoryItem from "../components/repository/RepositoryItem";
 import ReviewItem from "../components/repository/ReviewItem";
-import { GET_REPOSITORY } from "../graphql/queries";
+import useRepository from "../hooks/useRepository";
 
 const SingleRepository = () => {
   const { id } = useParams();
-  const [getRepository, { data }] = useLazyQuery(GET_REPOSITORY);
-
-  useEffect(() => {
-    getRepository({
-      variables: {
-        repositoryId: id,
-      },
-    });
-  }, [id]);
+  const { data, fetchMore } = useRepository({ repositoryId: id, first: 4 });
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   if (!data) return null;
   const reviews = data.repository.reviews?.edges.map((edge) => edge.node);
@@ -33,6 +26,8 @@ const SingleRepository = () => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <ReviewItem review={item} />}
       keyExtractor={({ id }) => id}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };

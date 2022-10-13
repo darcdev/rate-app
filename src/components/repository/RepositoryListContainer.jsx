@@ -17,7 +17,6 @@ const RepositoryListContainer = ({
     navigate(`/repository/${id}`);
   };
   const repositoryNodes = data ? data.edges.map((edge) => edge.node) : [];
-  console.log("repositories", repositoryNodes);
   return (
     <FlatList
       data={repositoryNodes}
