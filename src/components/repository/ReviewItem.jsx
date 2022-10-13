@@ -1,4 +1,5 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
+import * as Linking from "expo-linking";
 import React from "react";
 import theme from "../../theme";
 import Text from "../customComponents/Text";
@@ -7,30 +8,49 @@ import { format } from "date-fns";
 const ReviewItem = ({ review, myReview }) => {
   return (
     <View style={styles.cardContainer}>
-      <View>
-        <View style={styles.ratingContainer}>
+      <View style={styles.informationContainer}>
+        <View>
+          <View style={styles.ratingContainer}>
+            <Text
+              fontSize="subheading"
+              fontWeight="bold"
+              style={styles.ratingText}
+            >
+              {review.rating}
+            </Text>
+          </View>
+        </View>
+        <View style={styles.infoContainer}>
           <Text
-            fontSize="subheading"
+            style={styles.reviewUsername}
             fontWeight="bold"
-            style={styles.ratingText}
+            fontSize="subheading"
           >
-            {review.rating}
+            {myReview ? review.repository.fullName : review.user.username}
           </Text>
+          <Text style={styles.reviewDate} color="textSecondary">
+            {format(new Date(review.createdAt), "dd.MM.yyyy")}
+          </Text>
+          <Text style={styles.reviewText}>{review.text}</Text>
         </View>
       </View>
-      <View style={styles.infoContainer}>
-        <Text
-          style={styles.reviewUsername}
-          fontWeight="bold"
-          fontSize="subheading"
-        >
-          {myReview ? review.repository.fullName : review.user.username}
-        </Text>
-        <Text style={styles.reviewDate} color="textSecondary">
-          {format(new Date(review.createdAt), "dd.MM.yyyy")}
-        </Text>
-        <Text style={styles.reviewText}>{review.text}</Text>
-      </View>
+      {myReview && (
+        <View style={styles.buttonContainer}>
+          <Pressable
+            style={[styles.buttonAction, styles.viewRepository]}
+            onPress={() => Linking.openURL(review.repository.url)}
+          >
+            <Text fontWeight="bold" style={styles.labelSubmit}>
+              View Repository
+            </Text>
+          </Pressable>
+          <Pressable style={[styles.buttonAction, styles.deleteReview]}>
+            <Text fontWeight="bold" style={styles.labelSubmit}>
+              Delete Review
+            </Text>
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 };
@@ -38,7 +58,10 @@ const ReviewItem = ({ review, myReview }) => {
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: "white",
-    padding: 25,
+    padding: 20,
+    flexDirection: "column",
+  },
+  informationContainer: {
     flexDirection: "row",
   },
   ratingContainer: {
@@ -66,6 +89,28 @@ const styles = StyleSheet.create({
   },
   reviewDate: {
     marginBottom: 15,
+  },
+  buttonContainer: {
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  buttonAction: {
+    padding: 15,
+    borderRadius: 5,
+    flex: 1,
+  },
+  viewRepository: {
+    backgroundColor: theme.bg.primary,
+    marginRight: 2.5,
+  },
+  deleteReview: {
+    backgroundColor: theme.bg.secondary,
+    marginLeft: 2.5,
+  },
+  labelSubmit: {
+    color: theme.colors.textWhite,
+    textAlign: "center",
   },
 });
 

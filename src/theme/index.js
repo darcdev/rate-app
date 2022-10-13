@@ -5,6 +5,7 @@ const theme = {
     main: "#e1e4e8",
     nav: "#24292e",
     primary: "#0366d6",
+    secondary: "#d73a4a",
   },
   colors: {
     textPrimary: "#24292e",

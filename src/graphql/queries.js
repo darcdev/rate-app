@@ -96,6 +96,7 @@ export const GET_USER = gql`
             }
             repository {
               fullName
+              url
             }
           }
           cursor
