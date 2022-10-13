@@ -18,10 +18,10 @@ Rate App is a mobile application for rate and review github repositories, as wel
 
 #### Order by Rating Average
 
-<div style="display : flex;gap: 10px">
-  <img src="https://github.com/darcdev/rate-app/blob/main/.github/assets/Screenshot_1665676801.png?raw=true" width="200" height="400">
-    <img src="https://github.com/darcdev/rate-app/blob/main/.github/assets/Screenshot_1665679088.png?raw=true" width="200" height="400">
-	    <img src="https://github.com/darcdev/rate-app/blob/main/.github/assets/Screenshot_1665683336.png?raw=true" width="200" height="400">
+<div style="display : flex;gap: 20px">
+  <img src="https://github.com/darcdev/rate-app/blob/main/.github/assets/Screenshot_1665676801.png?raw=true" width="250" height="400">
+    <img src="https://github.com/darcdev/rate-app/blob/main/.github/assets/Screenshot_1665679088.png?raw=true" width="250" height="400">
+	    <img src="https://github.com/darcdev/rate-app/blob/main/.github/assets/Screenshot_1665683336.png?raw=true" width="250" height="400">
 </div>
 
 ## Technological Stack
